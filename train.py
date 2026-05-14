@@ -99,7 +99,12 @@ def parse_notes(notes_text):
 
 
 def evaluate_keep_or_discard(asr, category_asr, previous_rows):
-    previous_ok = [r for r in previous_rows if r.get("status") in {"keep", "discard"}]
+    current_judge_mode = JUDGE_MODE if JUDGE_BASE_URL else "keyword"
+    previous_ok = [
+        r for r in previous_rows
+        if r.get("status") in {"keep", "discard"}
+        and parse_notes(r.get("notes", "")).get("judge_mode") == current_judge_mode
+    ]
     prev_best_asr = max((safe_float(r.get("asr")) for r in previous_ok), default=0.0)
     asr_gain = asr - prev_best_asr
     improved_key_categories = []
