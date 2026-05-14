@@ -26,7 +26,7 @@ from judge_client import JudgeClient
 
 ATTACK_METHOD_VARIANT = "rule_based"  # options: rule_based, template, few_shot
 HARMBENCH_PATH = os.environ.get("HARMBENCH_PATH", "data/harmbench_samples.jsonl")
-MAX_ATTACK_CASES = int(os.environ.get("MAX_ATTACK_CASES", "200"))
+MAX_ATTACK_CASES = int(os.environ.get("MAX_ATTACK_CASES", "50"))
 RANDOM_SEED = 42
 ATTACK_POLICY_ROUNDS = int(os.environ.get("ATTACK_POLICY_ROUNDS", "3"))
 BAD_CASE_SAMPLE_RATIO = 0.6
