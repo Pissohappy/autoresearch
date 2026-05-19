@@ -1,7 +1,7 @@
 """
 Autoresearch jailbreak policy loop.
 Single-file entrypoint focused on iterative jailbreak attack strategy search.
-Usage: uv run train.py
+Usage: uv run run_experiment.py
 """
 
 import csv
@@ -21,7 +21,7 @@ from harmbench_data import load_harmbench, summarize_harmbench
 from judge_client import JudgeClient
 
 # ---------------------------------------------------------------------------
-# Runtime config (agent can edit train.py to iterate attack strategies)
+# Runtime config (agent can edit run_experiment.py to iterate attack strategies)
 # ---------------------------------------------------------------------------
 
 ATTACK_METHOD_VARIANT = "rule_based"

@@ -5,11 +5,11 @@
 ## 当前任务定义
 
 - 主循环是对目标模型执行不同提示注入/越狱策略，统计成功率并记录结果。
-- `train.py` 是 Agent 唯一可修改的文件，用于快速迭代攻击策略与评估逻辑。
+- `run_experiment.py` 是 Agent 唯一可修改的文件，用于快速迭代攻击策略与评估逻辑。
 
 ## 核心文件
 
-- **`train.py`**：Jailbreak 自动研究主入口（策略生成、执行、打分、记录）。
+- **`run_experiment.py`**：Jailbreak 自动研究主入口（策略生成、执行、打分、记录）。
 - **`judge_client.py`**：Judge LLM 客户端，调用外部 LLM 做多维度越狱成功评估（StrongREJECT / JailbreakBench / multidim）。
 - **`harmbench_data.py`**：加载 HarmBench 样本并做数据摘要。
 - **`program.md`**：Agent 执行规范与实验循环说明。
@@ -21,13 +21,13 @@
 uv sync
 
 # 2) 运行一次 jailbreak policy loop（无 Judge LLM 时使用关键词回退）
-uv run train.py
+uv run run_experiment.py
 
 # 3) 接入 Judge LLM 以获得可靠的越狱评估
 JUDGE_BASE_URL="http://your-llm:8000" \
 JUDGE_MODEL="gpt-4" \
 JUDGE_MODE="strongreject" \
-uv run train.py
+uv run run_experiment.py
 ```
 
 ## Judge 评估模式
@@ -72,7 +72,7 @@ uv run train.py
 
 ## 研究方式
 
-Agent 在 `train.py` 中不断迭代以下内容：
+Agent 在 `run_experiment.py` 中不断迭代以下内容：
 
 - prompt 攻击模板
 - 失败样本重采样策略
